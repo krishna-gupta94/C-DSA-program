@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node {
+    int data;
+    struct node *left,*right;
+    
+};
+int countnode(struct node *root){
+    if (root == NULL)
+        return 0;
+    return 1 + countnode(root->left) + countnode(root->right);
+    
+};
+int main (){
+    struct node *root = malloc(sizeof(struct node));
+    struct node *n1 = malloc(sizeof(struct node));
+    struct node *n2 = malloc(sizeof(struct node));
+    struct node *n3 = malloc(sizeof(struct node));
+    struct node *n4 = malloc(sizeof(struct node));
+    
+    root->data = 10;
+    root ->left = n1;
+    root->right = n2;
+
+    n1->data = 20;
+    n1->left = NULL;
+    n1->right = NULL;
+
+    n2->data = 30;
+    n2->left = n3;
+    n2->right = n4;
+
+    
+    n3->data = 40;
+    n3->left = NULL;
+    n3->right = NULL;
+    
+    n4->data = 40;
+    n4->left = NULL;
+    n4->right = NULL;
+
+    
+    printf("Total Nodes = %d",countnode(root));
+    return 0;
+
+}
